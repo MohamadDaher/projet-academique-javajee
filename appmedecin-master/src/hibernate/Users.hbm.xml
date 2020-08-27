@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Nov 26, 2019, 5:21:09 PM by Hibernate Tools 5.4.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.Users" optimistic-lock="version" polymorphism="implicit" schema="public" select-before-update="false" table="users">
+        <id name="id" type="long">
+            <column name="id"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="mail" optimistic-lock="true" type="char" unique="false">
+            <column length="1" name="mail" not-null="true" unique="true"/>
+        </property>
+        <property generated="never" lazy="false" name="telephone" optimistic-lock="true" type="long" unique="false">
+            <column name="telephone" not-null="true" unique="true"/>
+        </property>
+        <property generated="never" lazy="false" name="mdp" optimistic-lock="true" type="char" unique="false">
+            <column length="1" name="mdp" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="medecinremps" optimistic-lock="true" sort="unsorted" table="medecinremp">
+            <key on-delete="noaction">
+                <column name="id_user" not-null="true" unique="true"/>
+            </key>
+            <one-to-many class="hibernate.Medecinremp" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="dispotravails" optimistic-lock="true" sort="unsorted" table="dispotravail">
+            <key on-delete="noaction">
+                <column name="id_user" not-null="true"/>
+            </key>
+            <one-to-many class="hibernate.Dispotravail" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="employeurs" optimistic-lock="true" sort="unsorted" table="employeur">
+            <key on-delete="noaction">
+                <column name="id_user" not-null="true" unique="true"/>
+            </key>
+            <one-to-many class="hibernate.Employeur" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

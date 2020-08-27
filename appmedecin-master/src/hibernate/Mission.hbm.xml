@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Nov 26, 2019, 5:21:09 PM by Hibernate Tools 5.4.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.Mission" optimistic-lock="version" polymorphism="implicit" schema="public" select-before-update="false" table="mission">
+        <id name="id" type="long">
+            <column name="id"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="hibernate.Employeur" embed-xml="true" fetch="select" insert="true" name="employeur" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="idEmployeur" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="hibernate.Medecinremp" embed-xml="true" fetch="select" insert="true" name="medecinremp" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="idMedecinRemp"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="visiteDomicile" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="visiteDomicile"/>
+        </property>
+        <property generated="never" lazy="false" name="kmMaxVisite" optimistic-lock="true" type="big_integer" unique="false">
+            <column name="KmMaxVisite" precision="131089" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="activiteSeule" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="ActiviteSeule"/>
+        </property>
+        <property generated="never" lazy="false" name="retrocession" optimistic-lock="true" type="big_integer" unique="false">
+            <column name="retrocession" precision="131089" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="secreteriat" optimistic-lock="true" type="java.lang.Boolean" unique="false">
+            <column name="secreteriat"/>
+        </property>
+        <property generated="never" lazy="false" name="typePatient" optimistic-lock="true" type="string" unique="false">
+            <column name="typePatient"/>
+        </property>
+        <property generated="never" lazy="false" name="description" optimistic-lock="true" type="string" unique="false">
+            <column name="description"/>
+        </property>
+        <property generated="never" lazy="false" name="periode" optimistic-lock="true" type="date" unique="false">
+            <column length="13" name="periode"/>
+        </property>
+    </class>
+</hibernate-mapping>

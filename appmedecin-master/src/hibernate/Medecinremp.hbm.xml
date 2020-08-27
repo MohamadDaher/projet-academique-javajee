@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Nov 26, 2019, 5:21:09 PM by Hibernate Tools 5.4.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="hibernate.Medecinremp" optimistic-lock="version" polymorphism="implicit" schema="public" select-before-update="false" table="medecinremp">
+        <id name="id" type="long">
+            <column name="id"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="hibernate.Specialite" embed-xml="true" fetch="select" insert="true" name="specialite" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="Specialite"/>
+        </many-to-one>
+        <many-to-one class="hibernate.Users" embed-xml="true" fetch="select" insert="true" name="users" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="id_user" not-null="true" unique="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="kmMax" optimistic-lock="true" type="java.lang.Long" unique="false">
+            <column name="KmMax"/>
+        </property>
+        <property generated="never" lazy="false" name="longitude" optimistic-lock="true" type="double" unique="false">
+            <column name="longitude" not-null="true" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="lattitude" optimistic-lock="true" type="double" unique="false">
+            <column name="lattitude" not-null="true" precision="17" scale="17"/>
+        </property>
+        <property generated="never" lazy="false" name="description" optimistic-lock="true" type="string" unique="false">
+            <column name="description"/>
+        </property>
+        <property generated="never" lazy="false" name="cv" optimistic-lock="true" type="serializable" unique="false">
+            <column name="cv"/>
+        </property>
+        <property generated="never" lazy="false" name="cartePro" optimistic-lock="true" type="serializable" unique="false">
+            <column name="cartePro"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="missions" optimistic-lock="true" sort="unsorted" table="mission">
+            <key on-delete="noaction">
+                <column name="idMedecinRemp"/>
+            </key>
+            <one-to-many class="hibernate.Mission" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

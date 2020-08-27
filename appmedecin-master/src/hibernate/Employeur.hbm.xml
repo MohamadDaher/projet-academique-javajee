@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 26, 2019, 5:21:09 PM by Hibernate Tools 5.4.3.Final -->
+<hibernate-mapping>
+ <class name="hibernate.Employeur" schema="public" table="employeur">
+  <id name="id" type="long">
+   <column name="id"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="hibernate.Users" fetch="select" name="users">
+   <column name="id_user" not-null="true" unique="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="kmmax" type="java.lang.Long">
+   <column name="kmmax"/>
+  </property>
+  <property generated="never" lazy="false" name="longitude" type="double">
+   <column name="longitude" not-null="true" precision="17" scale="17"/>
+  </property>
+  <property generated="never" lazy="false" name="lattitude" type="double">
+   <column name="lattitude" not-null="true" precision="17" scale="17"/>
+  </property>
+  <property generated="never" lazy="false" name="cartepro" type="string">
+   <column name="cartepro"/>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="missions"
+   sort="unsorted" table="mission">
+   <key>
+    <column name="idEmployeur" not-null="true"/>
+   </key>
+   <one-to-many class="hibernate.Mission"/>
+  </set>
+ </class>
+</hibernate-mapping>
